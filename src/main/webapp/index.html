@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="scripts/calculate.js"></script>
+<script src="scripts/deleteCalculation.js"></script>
+<script src="scripts/getAllCalculations.js"></script>
+<script src="scripts/saveCalculation.js"></script>
+<script src="scripts/viewCalculation.js"></script>
+<script src="scripts/dataFormatter.js"></script>
+<script src="scripts/cancelButton.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="panel-heading">
+    <h3>
+        Previous Calculation
+    </h3>
+</div>
+<table id="Main-table" class="table table-striped">
+    <thead >
+    <tr>
+        <th data-formatter="runningFormatter">Index</th>
+        <th data-field="date_calculation">Calculation Date</th>
+        <th data-field="date_calculation" data-formatter="linkFormatter" data-sortable="true">Link</th>
+    </tr>
+    </thead>
+</table>
+
+<script>
+
+    $(document).ready(function () {
+        getAllCalculations();
+    });
+</script>
+
+<form id="input-form" style="display: block" >
+<input id="file" type="file" value="Choose file" />
+<button type="button" onclick="calculate()">Calculate</button>
+</form>
+
+<form id="table-view" style="display: none">
+    <h5 id="date" class="display-4"></h5>
+    <table id="view" >
+        <thead>
+        <tr>
+            <th data-field="function">Item ID</th>
+            <th data-field="result">Item Name</th>
+        </tr>
+        </thead>
+    </table>
+    <button class="btn btn-default" onclick="cancel()">Cancel</button>
+    <button class="btn btn-default" onclick="deleteCalculation()" >Delete Calculation</button>
+
+</form>
+<form id="table-form" style="display: none">
+    <h5 class="display-4">New Calculation</h5>
+    <table id="table" >
+        <thead>
+        <tr>
+            <th data-field="function">Item ID</th>
+            <th data-field="result">Item Name</th>
+        </tr>
+        </thead>
+    </table>
+    <button type="button" class="btn btn-default" onclick="saveCalculation()">Save Calculation</button>
+</form>
+</body>
+</html>
